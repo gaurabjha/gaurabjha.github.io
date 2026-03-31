@@ -1,395 +1,710 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <!-- SITE TITLE -->
-    <title>Gaurab Kumar Jha</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gaurab Kumar Jha — Senior Data Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #faf8f5;
+      --paper: #f3f0ea;
+      --sand: #e8e2d6;
+      --muted: #a89f8c;
+      --mid: #6b6356;
+      --ink: #2c2620;
+      --accent: #b85c38;
+      --accent-light: #f2ebe4;
+    }
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/custom-style.css">
-    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600,700' rel='stylesheet' type='text/css'>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,248,245,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sand);
+      padding: 0 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ─────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 8vw 6vw 8vw 10vw;
+      animation: fadeUp 0.9s ease both;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-size: 1.05rem;
+      color: var(--mid);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      letter-spacing: 0.01em;
+    }
+    .hero-pitch {
+      font-size: 1rem;
+      color: var(--mid);
+      max-width: 460px;
+      border-left: 2px solid var(--accent);
+      padding-left: 1.2rem;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-outline {
+      border: 1px solid var(--sand);
+      color: var(--mid);
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-right {
+      background: var(--paper);
+      display: flex; align-items: center; justify-content: center;
+      padding: 6vw;
+      position: relative; overflow: hidden;
+    }
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--sand) 0%, transparent 70%);
+      opacity: 0.6;
+    }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      width: 100%;
+      max-width: 380px;
+      position: relative;
+    }
+    .stat-card {
+      background: var(--cream);
+      padding: 2rem 1.5rem;
+      animation: fadeUp 0.9s ease both;
+    }
+    .stat-card:nth-child(2) { animation-delay: 0.1s; }
+    .stat-card:nth-child(3) { animation-delay: 0.2s; }
+    .stat-card:nth-child(4) { animation-delay: 0.3s; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* ── SECTION SHARED ───────────────────────────── */
+    section { padding: 7rem 10vw; }
+    section:nth-child(even) { background: var(--paper); }
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 3rem;
+    }
+    .section-title span { color: var(--accent); }
+
+    /* ── ABOUT ─────────────────────────────────────── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 1.02rem;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+      line-height: 1.85;
+    }
+    .about-text strong { color: var(--ink); font-weight: 500; }
+    .info-list { list-style: none; }
+    .info-list li {
+      display: flex; gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--sand);
+      font-size: 0.92rem;
+    }
+    .info-list li:last-child { border-bottom: none; }
+    .info-key {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      font-weight: 500;
+      min-width: 80px;
+      padding-top: 2px;
+    }
+    .info-val { color: var(--ink); }
+    .info-val a { color: var(--accent); text-decoration: none; }
+    .info-val a:hover { text-decoration: underline; }
+
+    /* ── EXPERIENCE ────────────────────────────────── */
+    #experience .exp-card {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border-radius: 2px;
+      position: relative;
+    }
+    #experience .exp-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      border-radius: 2px 0 0 2px;
+    }
+    .exp-header { margin-bottom: 1.5rem; }
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .exp-company {
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      padding: 0.4rem 0 0.4rem 1.4rem;
+      position: relative;
+      color: var(--mid);
+      font-size: 0.96rem;
+      line-height: 1.75;
+    }
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    /* ── IMPACT ────────────────────────────────────── */
+    #impact .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .impact-card {
+      background: var(--cream);
+      padding: 2rem;
+      border-top: 2px solid var(--accent);
+    }
+    .impact-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+    .impact-card h4 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+    .impact-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── SKILLS ────────────────────────────────────── */
+    #skills .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+    .skill-group h4 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--sand);
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 2px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .tag.neutral {
+      background: var(--paper);
+      color: var(--mid);
+    }
+
+    /* ── CONTACT ───────────────────────────────────── */
+    #contact {
+      background: var(--ink);
+    }
+    #contact .section-label { color: var(--accent); }
+    #contact .section-title { color: var(--cream); }
+    #contact .section-title span { color: var(--accent); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info p {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .contact-links { list-style: none; }
+    .contact-links li {
+      margin-bottom: 0.8rem;
+    }
+    .contact-links a {
+      color: var(--sand);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: color 0.2s;
+    }
+    .contact-links a:hover { color: var(--accent); }
+    .contact-links .ci {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      min-width: 60px;
+      font-weight: 500;
+    }
+    .contact-form-note {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      border-radius: 2px;
+    }
+    .contact-form-note p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 1.2rem;
+    }
+    .contact-form-note a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      background: #1a1410;
+      padding: 2rem 10vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    /* ── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 8rem 6vw 4rem; }
+      .hero-right { padding: 3rem 6vw 5rem; }
+      #about .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
-<body data-spy="scroll" data-target="#rock-navigation">
-<!-- START NAVIGATION -->
-<div class="navbar navbar-default bs-dos-nav navbar-fixed-top sticky-navigation" role="navigation">
-    <div class="container">
+<body>
 
-        <div class="navbar-header">
-            <button class="navbar-toggle" data-toggle="collapse" data-target="#rock-navigation">
-                <span class="icon icon-bar"></span>
-                <span class="icon icon-bar"></span>
-                <span class="icon icon-bar"></span>
-            </button>
-            <a href="#" class="navbar-brand">Gaurab Kumar Jha</a>
-        </div>
-        <nav class="collapse navbar-collapse" id="rock-navigation">
-            <ul class="nav navbar-nav navbar-right main-navigation text-uppercase">
-                <li><a href="#home" class="smoothScroll">Home</a></li>
-                <li><a href="#about" class="smoothScroll">About</a></li>
-                <!--					<li><a href="#work" class="smoothScroll">My Work</a></li>-->
-                <!--					<li><a href="#portfolio" class="smoothScroll">Portfolio</a></li>-->
-                <li><a href="#resume" class="smoothScroll">Resume</a></li>
-                <li><a href="#contact" class="smoothScroll">Contact</a></li>
-		<li><a href="BillSplitter" class="smoothScroll" >Project | BillSplitter</a></li>
-            </ul>
-        </nav>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">Gaurab Kumar Jha</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Senior Data Engineer · Bangalore, India</p>
+    <h1 class="hero-name">Gaurab<br>Kumar Jha</h1>
+    <p class="hero-title">Scalable Data Platforms &nbsp;·&nbsp; Distributed Systems &nbsp;·&nbsp; SQL Optimization</p>
+    <p class="hero-pitch">
+      I build scalable, high-performance data systems that turn complex data into reliable, decision-ready assets at scale.
+    </p>
+    <div class="hero-ctas">
+      <a href="#experience" class="btn-primary">View Experience</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
     </div>
-</div>
-<!-- END NAVIGATION -->
-
-<!-- START HOME -->
-<section id="home" class="custom-home">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2 col-sm-1"></div>
-            <div class="col-md-8 col-sm-10">
-                <h1 class="tm-home-title"><strong>Gaurab Kumar Jha</strong></h1>
-                <h2 class="tm-home-subtitle">Data Engineer &vert; Java Developer</h2>
-                <!--					<p>A <strong>Software Professional</strong> & <strong>Data Engineer</strong> who has tremendous zeal to learn and explore new available Technologies. Expertise in <strong>Big Data Processing</strong> – (Batch & NRT Processing) – Apache Hadoop, Apache Kafka, Apache Storm, Apache Spark, Apache Crunch, MapR, HBase, HDFS, Hive, Oozie, Zookeeper etc. Fair Knowledge on Cloud Infrastructure <strong>AWS</strong> &  Cloud Storage. Let us work together. Thank you.</p>-->
-                <a href="#about" class="btn btn-default smoothScroll tm-view-more-btn">Let's Begin</a>
-            </div>
-            <div class="col-md-2 col-sm-1"></div>
-        </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">11+</div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">9+</div>
+        <div class="stat-label">Years Big Data & Cloud</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">JP<br>Morgan</div>
+        <div class="stat-label">Current Employer</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Drive to Learn</div>
+      </div>
     </div>
+  </div>
 </section>
-<!-- END HOME -->
 
-<!-- START ABOUT -->
-<section id="about" class="tm-about">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-6 col-md-6 col-sm-offset-6 col-sm-7">
-                <div class="title">
-                    <h2>This is <strong>me</strong></h2>
-                    <h1 class="tm-red-text">Code Enthusiast</h1>
-                </div>
-                <p>A <strong>Software Professional</strong> & <strong>Data Engineer</strong> who has tremendous zeal to
-                    learn and explore new available Technologies. Expertise in <strong>Big Data Processing</strong> –
-                    (Batch & NRT Processing) – Apache Hadoop, <strong>Apache Kafka</strong>, <strong>Apache Airflow</strong>, Apache Storm, Apache Spark, Apache Crunch,
-                    MapR, HBase, HDFS, Hive, Oozie, Zookeeper , Kubernetes, Docker etc. Fair Knowledge on Cloud Infrastructure
-                    <strong>AWS</strong> & Cloud Storage. Let us work together. Thank you.</p>
-            </div>
-        </div>
+<!-- ABOUT -->
+<section id="about" class="fade-in">
+  <p class="section-label">Who I Am</p>
+  <h2 class="section-title">A bit <span>about me</span></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        <strong>11+ years of experience</strong> as a JAVA, Python & Big Data Developer with deep expertise in scalable systems and cloud infrastructure. I specialize in designing and building robust data solutions that handle complex processing at scale.
+      </p>
+      <p>
+        <strong>8+ years in Big Data & Cloud Development</strong> — proficient in Batch and Near Real-Time Processing of clinical data, SSD/HDD test data, and enterprise workloads. Expert in Python, Shell scripting, SQL, and relational databases. Strong knowledge of dependency management tools like Apache Maven and Git for source control.
+      </p>
+      <p>
+        Hands-on experience with <strong>AWS</strong> (EMR, EC2, MSK, EKS, MWAA) and <strong>GCP/GKE</strong>, enabling cloud-native data solutions. Proven track record in designing and leading implementation of scalable applications and tools. Strong collaborator with excellent communication and problem-solving capabilities.
+      </p>
+      <p>
+        Experienced in mentoring and evaluating team members, conducting peer code reviews, managing releases, and deploying code to production environments. Known for maintaining high coding standards and translating complex requirements into reliable, production-grade solutions.
+      </p>
     </div>
+    <ul class="info-list">
+      <li>
+        <span class="info-key">Name</span>
+        <span class="info-val">Gaurab Kumar Jha</span>
+      </li>
+      <li>
+        <span class="info-key">Location</span>
+        <span class="info-val">Bangalore, Karnataka 560043</span>
+      </li>
+      <li>
+        <span class="info-key">Email</span>
+        <span class="info-val"><a href="mailto:gaurabkjha@gmail.com">gaurabkjha@gmail.com</a></span>
+      </li>
+      <li>
+        <span class="info-key">Phone</span>
+        <span class="info-val">+91 9923832293</span>
+      </li>
+      <li>
+        <span class="info-key">Website</span>
+        <span class="info-val"><a href="https://gaurabjha.github.io/" target="_blank">gaurabjha.github.io</a></span>
+      </li>
+      <li>
+        <span class="info-key">GitHub</span>
+        <span class="info-val"><a href="https://github.com/gaurabjha" target="_blank">github.com/gaurabjha</a></span>
+      </li>
+      <li>
+        <span class="info-key">LinkedIn</span>
+        <span class="info-val"><a href="https://www.linkedin.com/in/gaurabjha/" target="_blank">linkedin.com/in/gaurabjha</a></span>
+      </li>
+      <li>
+        <span class="info-key">Resume</span>
+        <span class="info-val"><a href="Resume/GAURAB_JHA_DATA_ENGG_CV_2023" target="_blank">Download CV</a></span>
+      </li>
+    </ul>
+  </div>
 </section>
-<!-- END ABOUT -->
 
+<!-- EXPERIENCE -->
+<section id="experience" class="fade-in">
+  <p class="section-label">Career</p>
+  <h2 class="section-title">Professional <span>Experience</span></h2>
 
-<!-- START work
-<section id="work" class="tm-padding-top-bottom-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-1 col-md-11">
-                <h2 class="title">My <strong>Work</strong></h2>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="work-wrapper">
-                    <i class="fa fa-link"></i>
-                    <h3 class="text-uppercase tm-work-h3">Mobile UX</h3>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna.</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="work-wrapper">
-                    <i class="fa fa-flash"></i>
-                    <h3 class="text-uppercase tm-work-h3">Web Design</h3>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna.</p>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-4">
-                <div class="work-wrapper">
-                    <i class="fa fa-dashboard"></i>
-                    <h3 class="text-uppercase tm-work-h3">HTML Templates</h3>
-                    <hr>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna.</p>
-                </div>
-            </div>
-        </div>
+  <div class="exp-card">
+    <div class="exp-header">
+      <div class="exp-role">Senior Data Engineer</div>
+      <div class="exp-company">JP Morgan Chase &amp; Co.</div>
     </div>
-</section>
- END work -->
+    <ul class="exp-bullets">
+      <li>Designed and maintained scalable data pipelines handling high-volume datasets, ensuring reliability and data consistency across the platform.</li>
+      <li>Optimized complex SQL workloads — joins, CTEs, window functions — significantly improving query performance and reducing compute costs.</li>
+      <li>Worked extensively with <strong>Databricks</strong> and <strong>Delta tables</strong> for efficient data storage, processing, and incremental data handling.</li>
+      <li>Built reusable data models and abstractions to standardize data access across teams and downstream consumers.</li>
+      <li>Collaborated with cross-functional stakeholders to convert business requirements into efficient, production-grade technical implementations.</li>
+      <li>Mentored, interviewed, and evaluated new hires and interns; led code reviews to maintain high engineering standards.</li>
+      <li>Handled responsibilities of Release and Deployment Manager for pushing code into production environments.</li>
+    </ul>
+  </div>
 
-<!-- START PORTFOLIO -->
-<!--
-<section id="portfolio" class="tm-portfolio">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 wow bounce">
-                <div class="title">
-                    <h2 class="tm-portfolio-title">My <strong>Portfolio</strong></h2>
-                </div>
-
-                 START ISO SECTION
-                <div class="iso-section">
-                    <ul class="filter-wrapper clearfix">
-                        <li><a href="#" class="opc-main-bg selected" data-filter="*">All</a></li>
-                        <li><a href="#" class="opc-main-bg" data-filter=".html">HTML</a></li>
-                        <li><a href="#" class="opc-main-bg" data-filter=".photoshop">Photoshop</a></li>
-                        <li><a href="#" class="opc-main-bg" data-filter=".wordpress">Wordpress</a></li>
-                        <li><a href="#" class="opc-main-bg" data-filter=".mobile">Mobile</a></li>
-                    </ul>
-                    <div class="iso-box-section">
-                        <div class="iso-box-wrapper col4-iso-box">
-                            <div class="iso-box html photoshop wordpress mobile col-md-3 col-sm-3 col-xs-12">
-                                <div class="portfolio-thumb">
-                                    <img src="images/portfolio-img1.jpg" class="fluid-img" alt="portfolio img">
-                                    <div class="portfolio-overlay">
-                                        <h3 class="portfolio-item-title">UX Design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="iso-box html wordpress mobile col-md-3 col-sm-3 col-xs-12">
-                                <div class="portfolio-thumb">
-                                    <img src="images/portfolio-img2.jpg" class="fluid-img" alt="portfolio img">
-                                    <div class="portfolio-overlay">
-                                        <h3 class="portfolio-item-title">UX Design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="iso-box wordpress col-md-3 col-sm-3 col-xs-12">
-                                <div class="portfolio-thumb">
-                                    <img src="images/portfolio-img3.jpg" class="fluid-img" alt="portfolio img">
-                                    <div class="portfolio-overlay">
-                                        <h3 class="portfolio-item-title">UX Design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="iso-box html mobile col-md-3 col-sm-3 col-xs-12">
-                                <div class="portfolio-thumb">
-                                    <img src="images/portfolio-img4.jpg" class="fluid-img" alt="portfolio img">
-                                    <div class="portfolio-overlay">
-                                        <h3 class="portfolio-item-title">UX Design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="iso-box wordpress col-md-3 col-sm-3 col-xs-12">
-                                <div class="portfolio-thumb">
-                                    <img src="images/portfolio-img5.jpg" class="fluid-img" alt="portfolio img">
-                                    <div class="portfolio-overlay">
-                                        <h3 class="portfolio-item-title">UX Design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="iso-box html photoshop col-md-3 col-sm-3 col-xs-12">
-                                <div class="portfolio-thumb">
-                                    <img src="images/portfolio-img6.jpg" class="fluid-img" alt="portfolio img">
-                                    <div class="portfolio-overlay">
-                                        <h3 class="portfolio-item-title">UX Design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="iso-box photoshop col-md-3 col-sm-3 col-xs-12">
-                                <div class="portfolio-thumb">
-                                    <img src="images/portfolio-img7.jpg" class="fluid-img" alt="portfolio img">
-                                    <div class="portfolio-overlay">
-                                        <h3 class="portfolio-item-title">UX Design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="iso-box wordpress col-md-3 col-sm-3 col-xs-12">
-                                <div class="portfolio-thumb">
-                                    <img src="images/portfolio-img8.jpg" class="fluid-img" alt="portfolio img">
-                                    <div class="portfolio-overlay">
-                                        <h3 class="portfolio-item-title">UX Design</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- <div class="exp-card">
+    <div class="exp-header">
+      <div class="exp-role">Big Data &amp; Java Developer</div>
+      <div class="exp-company">Earlier Roles — 6+ Years</div>
     </div>
+    <ul class="exp-bullets">
+      <li>6+ years in Big Data &amp; Cloud Development — Batch and NRT processing of clinical data and SSD/HDD test data.</li>
+      <li>Delivered production-grade solutions using Apache Kafka, Spark, Storm, Crunch, MapR, HBase, HDFS, Hive, Oozie, and Zookeeper.</li>
+      <li>Worked on cloud infrastructure including AWS EMR, EC2, and GCP/GKE; containerized workloads with Kubernetes and Docker.</li>
+      <li>Strong knowledge in Java, Python, C#, Ruby scripting, SQL, and dependency management tools like Apache Maven and Git.</li>
+    </ul>
+  </div> -->
 </section>
--->
-<!-- END PORTFOLIO -->
 
-	<!-- START RESUME -->
-	<section id="resume" class="tm-padding-top-bottom-100">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 col-sm-6">
-					<h2 class="title">My <strong>Profile</strong></h2>
-					<p><span class="tm-info-label">Name</span> Gaurab Kumar Jha</p>
-					<p><span class="tm-info-label">Birthday</span> February 02, 1991</p>
-					<p><span class="tm-info-label">Address</span> Bangalore, Karnataka, India 560043</p>
-					<p><span class="tm-info-label">Phone</span> +91 9923832293 </p>
-					<p><span class="tm-info-label">Email</span> <a href="mailto:gaurabkjha@gmail.com">gaurabkjha@gmail.com</a></p>
-					<p><span class="tm-info-label">Website</span> <a href="https://gaurabjha.github.io/"
-																	 class="tm-red-text">https://gaurabjha.github.io/</a>
-					</p>
-                    <p> <a href="Resume/GAURAB_JHA_DATA_ENGG_CV_2023" target="_blank">Download Resume</a></p>
-					<h3 class="title"><strong></strong> COMPETENCES</h3>
-					<div>
-						<h4 class="tm-progress-label">JAVA <small class="progress-percent-small">90%</small></h4>
-						<div class="progress tm-progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100"
-								 aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-						</div>
-						<h4 class="tm-progress-label">APACHE SPARK, KAFKA <small
-								class="progress-percent-small">80%</small>
-						</h4>
-						<div class="progress tm-progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="90"
-								 aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-						</div>
-						<h4 class="tm-progress-label">HDFS,MAPR,HIVE,CRUNCH <small
-								class="progress-percent-small">80%</small></h4>
-						<div class="progress tm-progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
-								 aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-						</div>
-						<h4 class="tm-progress-label">CLOUD INFRASTRUCTURE <small
-								class="progress-percent-small">80%</small>
-						</h4>
-						<div class="progress tm-progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
-								 aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-						</div>
-						<h4 class="tm-progress-label">PYTHON, SHELL SCRIPT <small
-								class="progress-percent-small">60%</small>
-						</h4>
-						<div class="progress tm-progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
-								 aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-						</div>
-						<h4 class="tm-progress-label">SQL <small class="progress-percent-small">70%</small></h4>
-						<div class="progress tm-progress">
-							<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80"
-								 aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6 col-sm-6">
-					<h2 class="title"><strong>PROFESSIONAL </strong> SUMMARY</h2>
-					<ul>
-                        <li><p>9+ years of experience as JAVA, Python &amp; Big Data Developer</p></li>
-                        <li><p>6+ years of experience in Big Data &amp; Cloud Development – Batch and NRT Processing of the clinical data, SSD/HDD Test Data</p></li>
-                        <li><p>Fair Knowledge on Java, Python, C#, ruby scripting and relational databases, SQL (Structured Query Language) etc.</p></li>
-                        <li><p>Designed and Contributed to the design and implantation of various applications and tools. </p></li>
-                        <li><p>Interviewed, Mentored, evaluated and graduated new hires and interns in the team.</p></li>
-                        <li><p>Good Knowledge on Dependency management, Source Control and comprehension tool Such as Apache Maven, Git etc.</p></li>
-                        <li><p>Participated in peer code review to maintain high coding standards.</p></li>
-                        <li><p>Good team player with excellent communication skills, interpersonal skills with problem solving, trouble-shooting capabilities.</p></li>
-                        <li><p>Handled responsibility of Release and Deployment manager for pushing the code into production environment</p></li>
-                        <li><p>Worked on Cloud Storage & AWS – EMR, EC2, GCP/GKE</p></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- END RESUME -->
+<!-- IMPACT -->
+<section id="impact" class="fade-in">
+  <p class="section-label">Highlights</p>
+  <h2 class="section-title">Key <span>Impact</span></h2>
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="impact-icon">⚡</div>
+      <h4>Query Performance</h4>
+      <p>Improved processing times dramatically through advanced SQL optimization — joins, window functions, and CTE restructuring.</p>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🛡️</div>
+      <h4>Data Reliability</h4>
+      <p>Enhanced data correctness by systematically addressing null handling, inconsistencies, and schema evolution edge cases.</p>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">🏗️</div>
+      <h4>Scalable Architecture</h4>
+      <p>Contributed to architectural decisions improving maintainability, extensibility, and long-term platform scalability.</p>
+    </div>
+    <div class="impact-card">
+      <div class="impact-icon">📊</div>
+      <h4>Decision-Ready Data</h4>
+      <p>Enabled faster decision-making by delivering clean, well-structured datasets to downstream consumers and business teams.</p>
+    </div>
+  </div>
+</section>
 
+<!-- SKILLS -->
+<section id="skills" class="fade-in">
+  <p class="section-label">Toolkit</p>
+  <h2 class="section-title">Technical <span>Skills</span></h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Languages</h4>
+      <div class="skill-tags">
+        <span class="tag">SQL (Advanced)</span>
+        <span class="tag">Java</span>
+        <span class="tag">Python</span>
+        <span class="tag neutral">C#</span>
+        <span class="tag neutral">Ruby</span>
+        <span class="tag neutral">Shell Script</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Data Platforms</h4>
+      <div class="skill-tags">
+        <span class="tag">Databricks</span>
+        <span class="tag">Delta Lake</span>
+        <span class="tag">Apache Spark</span>
+        <span class="tag">Apache Kafka</span>
+        <span class="tag">Apache Airflow</span>
+        <span class="tag neutral">Hive</span>
+        <span class="tag neutral">HBase</span>
+        <span class="tag neutral">HDFS</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Cloud & Infrastructure</h4>
+      <div class="skill-tags">
+        <span class="tag">AWS EMR / EC2</span>
+        <span class="tag">GCP / GKE</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">Docker</span>
+        <span class="tag neutral">MapR</span>
+        <span class="tag neutral">Zookeeper</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Core Competencies</h4>
+      <div class="skill-tags">
+        <span class="tag">Data Modeling</span>
+        <span class="tag">ETL / ELT Pipelines</span>
+        <span class="tag">Performance Tuning</span>
+        <span class="tag">System Design</span>
+        <span class="tag neutral">Fault Tolerance</span>
+        <span class="tag neutral">Data Quality</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Dev Tools</h4>
+      <div class="skill-tags">
+        <span class="tag">Git</span>
+        <span class="tag">Apache Maven</span>
+        <span class="tag neutral">Oozie</span>
+        <span class="tag neutral">Apache Storm</span>
+        <span class="tag neutral">Apache Crunch</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-	<!-- START SOCIAL -->
-	<section id="social" class="tm-social">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-4 wow rotateInUpLeft" data-wow-delay="0.3s">
-					<div class="media facebook">
-						<a href="https://www.facebook.com/gaurabjha/">
-							<div class="media-object pull-left">
-								<i class="fa fa-facebook"></i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading tm-social-title">Follow me on</h4>
-								<h3>Facebook</h3>
-							</div>
-						</a>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-4 wow rotateInUpLeft" data-wow-delay="0.6s">
-					<div class="media twitter">
-						<a href="https://www.linkedin.com/in/gaurabjha/">
-							<div class="media-object pull-left">
-								<i class="fa fa-linkedin-square"></i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading tm-social-title">Add me to your </h4>
-								<h3>LinkedIn</h3>
-							</div>
-						</a>
-					</div>
-				</div>
-				<i class=""></i>
+<!-- CONTACT -->
+<section id="contact" class="fade-in">
+  <p class="section-label">Let's Connect</p>
+  <h2 class="section-title">Get in <span>Touch</span></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>I'm always open to interesting conversations about data engineering, distributed systems, or new opportunities. Feel free to reach out.</p>
+      <ul class="contact-links">
+        <li><a href="mailto:gaurabkjha@gmail.com"><span class="ci">Email</span> gaurabkjha@gmail.com</a></li>
+        <li><a href="tel:+919923832293"><span class="ci">Phone</span> +91 99238 32293</a></li>
+        <li><a href="https://www.linkedin.com/in/gaurabjha/" target="_blank"><span class="ci">LinkedIn</span> linkedin.com/in/gaurabjha</a></li>
+        <li><a href="https://github.com/gaurabjha" target="_blank"><span class="ci">GitHub</span> github.com/gaurabjha</a></li>
+        <li><a href="https://gaurabjha.github.io/" target="_blank"><span class="ci">Website</span> gaurabjha.github.io</a></li>
+      </ul>
+    </div>
+    <div class="contact-form-note">
+      <p>Prefer a direct message? Send me an email at <a href="mailto:gaurabkjha@gmail.com">gaurabkjha@gmail.com</a> and I'll respond promptly.</p>
+      <p>You can also find my work and open-source contributions on <a href="https://github.com/gaurabjha" target="_blank">GitHub</a>, and connect professionally on <a href="https://www.linkedin.com/in/gaurabjha/" target="_blank">LinkedIn</a>.</p>
+      <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+        <a href="mailto:gaurabkjha@gmail.com"target="_blank" class="btn-outline" style="color:var(--sand); border-color:var(--sand);">Send a Message →</a>
+        <a href="Resume/GAURAB_JHA_DATA_ENGG_CV_2023" target="_blank" class="btn-outline" style="color:var(--sand); border-color:var(--sand);">Download Resume</a>
 
+    </div>
+    <div style="display:flex; gap:1rem; margin-top:1.5rem;">
+        <a href="https://gaurabjha.github.io/BillSplitter" class="btn-outline" style="color:var(--sand); border-color:var(--sand);">Fun Project : Bill Splitter</a>
 
-				<div class="col-md-4 col-sm-4 wow rotateInUpLeft" data-wow-delay="0.9s">
-					<div class="media pinterest">
-						<a href="https://github.com/gaurabjha">
-							<div class="media-object pull-left">
-								<i class="fa fa-github-square"></i>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading tm-social-title">Check My Codes</h4>
-								<h3>on GitHub!</h3>
-							</div>
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- END SOCIAL -->
+    </div>
+    </div>
+  </div>
+</section>
 
-	<!-- START CONTACT -->
-	<section id="contact" class="tm-contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h2 class="title">Drop <strong>me a line</strong></h2>
-					<hr>
-				</div>
-				<div class="col-md-1 col-sm-1"></div>
-				<div class="col-md-10 col-sm-10">
-					<form action="https://formspree.io/f/xoqprdkk" method="post">
-						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="text" placeholder="Your Name" name="_name">
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<input class="form-control" type="email" name="_replyto" placeholder="Your Email">
-						</div>
-						<div class="col-md-12 col-sm-12">
-							<input class="form-control" type="text" placeholder="Your Subject" name="_subject">
-							<textarea class="form-control" placeholder="Your Message" name="message" rows="6"></textarea>
-						</div>
-						<div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
-							<input class="form-control" type="submit" value="SHOOT MESSAGE">
-						</div>
-					</form>
-				</div>
-				<div class="col-md-1 col-sm-1"></div>
-				<div class="col-md-12 col-sm-12">
-					<p>Copyright &copy; 2021 Gaurab Jha
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- END CONTACT -->
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/smoothscroll.js"></script>
-	<script src="js/jquery.nav.js"></script>
-	<script src="js/isotope.js"></script>
-	<script src="js/imagesloaded.min.js"></script>
-	<script src="js/custom.js"></script>
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Gaurab Kumar Jha</span>
+  <span>Senior Data Engineer · Bangalore, India</span>
+</footer>
+
+<script>
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
